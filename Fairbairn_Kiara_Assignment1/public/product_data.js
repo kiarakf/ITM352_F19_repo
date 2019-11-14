@@ -1,3 +1,4 @@
+//this is my product array for the invoice and products display page
 products =
 [
     {
