@@ -5,16 +5,23 @@
   var quantities = []; //makes the variables quantities into an array
   // form was submitted so process the invoice
   if (params.has('purchase_submit')) { //if the form has purchase_submit
-    for (i = 0; i < products.length; i++) {  
+    for (i = 0; i < products.length; i++) {
       if (params.has(`quantity${i}`)) { // if the form has quantity(i)
         a_qty = params.get(`quantity${i}`); //quantity (i) is assigned into a_qty
         quantities[i] = a_qty; //a_qty is placed into the array
       }
     }
-  } else { 
+  } else {
     document.write('no form submitted'); //displays when no form is submitted
   }
   console.log(quantities);  //displays quantities array in the console
+
+  if (params.has("stickMe2")) {
+    window.onload = function () {
+      displayName = params.get("stickMe2");
+      document.getElementById("showFullName").innerHTML = displayName;
+    }
+  }
 </script>
 
 <!doctype html>
@@ -30,6 +37,7 @@
 
 
 <!--This code was taken from contributors: WesCossick, HazemKhaled source: https://github.com/sparksuite/simple-html-invoice-template/blob/master/invoice.html-->
+
 <body>
   <div class="invoice-box">
     <table cellpadding="0" cellspacing="0">
@@ -48,14 +56,18 @@
         <td colspan="4">
           <table>
             <tr>
-              <td style = "font-size: 50px">
+              <td style="font-size: 50px">
                 Kiara's Clothing Store
               </td>
               <td style="padding-left: 20px">
-                  <img class="invoiceimage" src='./images/index.jpg' height="10%" width="10%">
+                <img class="invoiceimage" src='./images/index.jpg' height="10%" width="10%">
               </td>
-              <td style= "font-size: 25px ">
-                Thank you for your purchase! 
+            </tr>
+          </table>
+          <table>
+            <tr>
+              <td style="font-size: 15px">
+                Thank you <div id="showFullName">name</div> for your purchase!
               </td>
             </tr>
           </table>
@@ -127,15 +139,15 @@
         <td style="padding-left: 50px">
           $
           <script> //displays subtotal
-          document.write(subtotal);
-          </script> 
+            document.write(subtotal);
+          </script>
         </td>
       </tr>
       <tr>
         <td>
           Tax @
           <script> //displays tax rate @ 4%
-          document.write(100 * tax_rate);
+            document.write(100 * tax_rate);
           </script>%</span>
 
         </td>
@@ -144,7 +156,7 @@
         <td style="padding-left: 50px">
           $
           <script> //displays tax amount with 2 decimal places
-          document.write(tax.toFixed(2));
+            document.write(tax.toFixed(2));
           </script>
         </td>
       </tr>
@@ -157,7 +169,7 @@
         <td style="padding-left: 50px">
           $
           <script>//displays shipping cost with 2 decimal places
-          document.write(shipping.toFixed(2));
+            document.write(shipping.toFixed(2));
           </script>
         </td>
 
@@ -169,7 +181,7 @@
           <strong>Total: $
             <script>//displays total with 2 decimal places
               document.write(total.toFixed(2));
-              </script></strong></strong>
+            </script></strong></strong>
         </td>
       </tr>
       <tr>
