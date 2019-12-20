@@ -1,0 +1,103 @@
+<!--Author: Shane Shimizu, Daniel Francis Barit-->
+<!--File Description: homepage-->
+<!--Date: 11/30/19-->
+<!DOCTYPE html>
+<html>
+<!--Source from: WebDevSimplified, https://github.com/WebDevSimplified/Introduction-to-Web-Development/tree/master/Introduction%20to%20CSS/Lesson%203-->
+
+<head>
+    <title>Shanes Surf Shop</title>
+    <meta name="description" content="This is the description">
+    <link rel="stylesheet" href="styles.css" />
+    <script src="products.js"></script>
+    <script src="userproducts.js"></script>
+
+  <script>
+
+  if (typeof(Storage) !== "undefined") {
+    // Store
+    localStorage.setItem("lastname", "Smith");
+    // Retrieve
+    document.getElementById("result").innerHTML = localStorage.getItem("lastname");
+  } else {
+    document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+  }
+  
+
+  </script>
+</head>
+
+<body>
+    <h2 class="promo-label">SPECIAL PROMO: Enter "M4KA1" at Login or Register to get $2 off any Makai Bowl! Click <a href="login.html" class="promo-here" onclick="alert('Don\'t forget! It\'s M4KA1')">HERE</a></h2>
+    <header class="main-header">
+        <nav class="nav main-nav">
+            <ul>
+                <li><a href="index.html"><img src="Images/brandlogo.png" class="brandlogo"></a></li>
+                <li></li>
+                <li></li>
+                <li><a href="index.html">H O M E</a></li>
+                <li><a href="store.html">S H O P</a></li>
+                <li><a href="login.html">L O G I N</a></li>
+
+            </ul>
+        </nav>
+        <!--Source from: WebDevSimplified, https://github.com/WebDevSimplified/Introduction-to-Web-Development/tree/master/Introduction%20to%20CSS/Lesson%203-->
+        <h1 class="title-name title-name-large">MAKAI BOWLS</h1>
+        <div class="container">
+            <!--creates a button, when user clicks, calls welcome function-->
+        </div>
+    </header>
+    <div class="body-products">
+        <div id="slider">
+            <figure>
+                <img src="Images/largeone.png" class="largeimages">
+                <img src="Images/largetwo.png" class="largeimages">
+                <img src="Images/largeone.png" class="largeimages">
+                <img src="Images/largethree.png" class="largeimages">
+                <img src="Images/largeone.png" class="largeimages">
+            </figure>
+        </div>
+    </div>
+    <div class="body-productstwo">
+        <div class="clickable-images">
+            <a href="store.html#apparel-section"><img src="Images/clothes.png" class="clickable-images-size"></a>
+            <div class="text-over-image">
+                <a href="store.html#apparel-section">APPAREL</a>
+            </div>
+        </div>
+        <div class="clickable-images">
+            <a href="store.html#bowls-section"><img src="Images/bowls.png" class="clickable-images-size"></a>
+            <div class="text-over-image">
+                <a href="store.html#bowls-section">BOWLS</a>
+            </div>
+        </div>
+        <div class="clickable-images">
+            <a href="store.html#accessories-section"><img src="Images/accessories.png" class="clickable-images-size"></a>
+            <div class="text-over-image">
+                <a href="store.html#accessories-section">ACCESSSORIES</a>
+            </div>
+        </div>
+    </div>
+    <div class="body-productsthree">
+        <div class="about-section">
+            <img src="Images/aboutimage.JPG" class="about-image">
+        </div>
+        <div class="about-written">
+                <h1 class="about-header">ABOUT US</h1> <br>
+            Locally owned and operated, Makai Bowls is located in the heart of Kailua, Hawaii. 
+            We are determined to give you the best tasting Acai bowls with an instagram worthy appearance. 
+            Created in 2015, Makai Bowls continues to grow and serve the Hawaii community with enthusiasm, love, and the value of the aloha spirit. 
+        </div>
+    </div>
+    <footer class="footer-home">
+            <h1 class="follow-footer">FOLLOW US</h1>
+            <div class="socials">
+                <a href="https://www.facebook.com/makaibowlshawaii/" target="new"><img src="Images/facebooklogo.png" class="socials-size">
+                Facebook</a>
+                <a href="https://www.instagram.com/makaibowlshawaii/?hl=en" target="new"><img src="Images/iglogo.png" class="socials-size">
+                Instagram</a>
+            </div>
+    </footer>
+</body>
+
+</html>

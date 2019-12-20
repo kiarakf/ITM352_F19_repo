@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="products.js"></script>
+    <script src="addtocart.js"></script>
+    <script src="store.js"></script>
+    <script src="userproducts.js"></script>
+
+</head>
+<script>
+
+
+    storedUsersCart = JSON.parse(localStorage.getItem("usersCart"));
+    storedUsersCart2 = JSON.parse(localStorage.getItem("usersCart2"));
+    storedUsersCart3 = JSON.parse(localStorage.getItem("usersCart3"));
+    storedUsersCart4 = JSON.parse(localStorage.getItem("usersCart4"));
+    storedUsersCart5 = JSON.parse(localStorage.getItem("usersCart5"));
+    storedUsersCart6 = JSON.parse(localStorage.getItem("usersCart6"));
+    storedUsersCart7 = JSON.parse(localStorage.getItem("usersCart7"));
+    storedUsersCart8 = JSON.parse(localStorage.getItem("usersCart8"));
+    storedUsersCart9 = JSON.parse(localStorage.getItem("usersCart9"));
+    storedUsersCart10 = JSON.parse(localStorage.getItem("usersCart10"));
+    storedUsersCart11 = JSON.parse(localStorage.getItem("usersCart11"));
+    storedUsersCart12 = JSON.parse(localStorage.getItem("usersCart12"));
+
+    storedUsersCartArray.push(storedUsersCart);
+    storedUsersCartArray.push(storedUsersCart2);
+    storedUsersCartArray.push(storedUsersCart3);
+    storedUsersCartArray.push(storedUsersCart4);
+    storedUsersCartArray.push(storedUsersCart5);
+    storedUsersCartArray.push(storedUsersCart6);
+    storedUsersCartArray.push(storedUsersCart7);
+    storedUsersCartArray.push(storedUsersCart8);
+    storedUsersCartArray.push(storedUsersCart9);
+    storedUsersCartArray.push(storedUsersCart10);
+    storedUsersCartArray.push(storedUsersCart11);
+    storedUsersCartArray.push(storedUsersCart12);
+
+    if (storedUsersCartArray != null) {
+        var updatedCartArray = storedUsersCartArray.filter(function (el) { return el; });
+
+    }
+
+    function displayUserProducts() {
+        for (i = 0; i < updatedCartArray.length; i++) {
+            document.write(`
+            <div class="shop-item">
+            <span class="shop-item-title">${updatedCartArray[i].model}</span>
+            <div class="enlarge">
+                <img class="shop-item-image" src=${updatedCartArray[i].image}>
+            </div>
+            <div class="shop-item-description">${updatedCartArray[i].description}</div>
+            <div class="shop-item-details">
+                <span class="shop-item-price">$${updatedCartArray[i].price.toFixed(2)}</span>
+                <label id="quantity${i}_label" class="shop-item-quantity">Quantity</label>
+                <input class="cart-quantity-input" type="text" name="quantity${i}" onkeyup=checkQuantityTextbox(this); placeholder="0">
+            </div>
+            </div>
+        `);
+        }
+    }
+
+    function clearCart() {
+        localStorage.clear();
+        alert("cart has been cleared");
+        window.location.reload();
+    }
+
+    let params = (new URL(document.location)).searchParams;
+    if (params.has("quantityError")) { //if there are errors
+        alert(params.get('quantityError')); //alert appropriate quantity error
+    }
+
+    //Source W3 Schools Cookies: https://www.w3schools.com/js/js_cookies.asp
+    var recentViewArray = [];
+    //aloha bowl
+    function setCookie0(cname, cvalue, exdays) {
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        var expires = "expires=" + d.toGMTString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    function getCookie0(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+    var user='';
+    function checkCookie0() {
+        user = getCookie0("alohabowl");
+        if (user == "") {
+           document.write('No recent items Viewed <br> Recently viewed will clear after 30 min');
+        } else {
+            if (user != "" && user != null) {
+                setCookie0("alohabowl", JSON.stringify(products[0]), 30);
+                final = JSON.parse(user);
+                recentViewArray.push(final);
+                document.write(`
+                    <div class="shop-item">
+                        <div class="enlarge">
+                            <img class="shop-item-image" src=${recentViewArray[0].image}>
+                        </div>
+                        <div class="shop-item-details">
+                            <span class="shop-item-price">$${recentViewArray[0].price.toFixed(2)}</span>
+                        </div>
+                    </div>
+                `);
+            }
+        }
+    }
+
+
+
+
+
+</script>
+
+<body>
+    <header class="main-header">
+        <nav class="main-nav nav">
+            <ul>
+                <li><a href="index.html"><img src="Images/brandlogo.png" class="brandlogo"></a></li>
+                <li></li>
+                <li></li>
+                <li><a href="index.html">H O M E</a></li>
+                <li><a href="store.html">S H O P</a></li>
+                <li><a href="cart.html">C A R T</a></li>
+                <li><a href="login.html">L O G I N</a></li>
+
+
+            </ul>
+        </nav>
+        <h1 class="title-name title-name-large">CART</h1>
+    </header>
+    <section class="container content-section">
+        <!--creates an HTML form and the action upon submission is process_form, browser will send the data to the web server to be processed with POST.-->
+        <form name="product_selection_form" action="/process_form" method="POST">
+            <h2 class="section-header">Current Items In Cart</h2>
+            <div class="shop-items">
+                <!--calls function to display products on page-->
+                <script>displayUserProducts();</script>
+            </div>
+            <input class="btn btn-primary btn-purchase" type="submit" name="purchase_submit" value="P U R C H A S E">
+        </form>
+        <button class="btn btn-primary btn-purchase" onclick="clearCart()">Clear Cart</button>
+        <section class="container content-section">
+            <h2 class="section-header" id="bowls-section">Recently Viewed Items</h2>
+            <div class="shop-items">
+                <!--calls function to display products on page-->
+                <script>checkCookie0()</script>
+            </div>
+        </section>
+    </section>
+</body>
+
+</html>

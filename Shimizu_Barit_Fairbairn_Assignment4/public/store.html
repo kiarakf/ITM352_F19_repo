@@ -1,0 +1,58 @@
+<!--Author: Shane Shimizu, Daniel Francis Barit-->
+<!--File Description: products page-->
+<!--Date: 11/30/19-->
+<!DOCTYPE html>
+<html>
+<!--Source from: WebDevSimplified, https://github.com/WebDevSimplified/Introduction-to-Web-Development/tree/master/Introduction%20to%20CSS/Lesson%203-->
+
+<head>
+    <title>Makai Bowls | Shop</title>
+    <meta name="description" content="This is the description">
+    <link rel="stylesheet" href="styles.css" />
+    <script src="store.js" async></script>
+    <script src="products.js"></script>
+
+    <script>
+        
+    </script>
+
+</head>
+
+<body>
+    <h2 class="promo-label">SPECIAL PROMO: Enter "M4KA1" at Login or Register to get $2 off any Makai Bowl! Click <a href="login.html" class="promo-here" onclick="alert('Don\'t forget! It\'s M4KA1')">HERE</a></h2>
+    <header class="main-header">
+        <nav class="main-nav nav">
+            <ul>
+                    <li><a href="index.html"><img src="Images/brandlogo.png" class="brandlogo"></a></li>
+                    <li></li>
+                    <li></li>
+                <li><a href="index.html">H O M E</a></li>
+                <li><a href="store.html">S H O P</a></li>
+                <li><a href="cart.html">C A R T</a></li>
+                <li><a href="login.html">L O G I N</a></li>
+
+
+            </ul>
+        </nav>
+        <h1 class="title-name title-name-large">SHOP</h1>
+    </header>
+    <section class="container content-section">
+            <h2 class="section-header" id="bowls-section">Bowls</h2>
+            <div class="shop-items">
+                <!--calls function to display products on page-->
+                <script>displayProducts();</script>
+            </div>
+            <h2 class="section-header" id="apparel-section">Apparel</h2>
+            <div class="shop-items">
+                <!--calls function to display products on page-->
+                <script>displayProducts2();</script>
+            </div>
+            <h2 class="section-header" id="accessories-section">Accessories</h2>
+            <div class="shop-items">
+                <!--calls function to display products on page-->
+                <script>displayProducts3();</script>
+            </div>
+    </section>
+</body>
+
+</html>

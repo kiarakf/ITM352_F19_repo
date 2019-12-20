@@ -1,0 +1,129 @@
+<!--Authors: Shane Shimizu, Daniel Francis Barit-->
+<!--File Description: registration page-->
+<!--Date: 11/30/19-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="registration.css" />
+    <title>Document</title>
+    <script>
+        //source Professor Port's office hours
+        let params = (new URL(document.location)).searchParams; //gives access to the get decoded query arguments in the URL.
+        window.onload = function () { //when the page loads
+            if (params.has("RegFullnameError")) { //if has RegFullnameError from query
+
+                regError = params.get("RegFullnameError"); //get the errors from the query and store into variable
+                nameLong = '<font color="red">Full Name must be 30 characters or less</font>'; //assigns same error message into a variable
+                nameNoLetter = '<font color="red">Full Name must be letters only</font>'; //assigns same error message into a variable
+
+                if (regError == nameLong) { //if the error received is the same as the error stored in the variable
+                    document.getElementById("regfullname").innerHTML = regError; //set inner html to display the register error
+                }
+                if (regError == nameNoLetter) { //if the error received is the same as the error stored in the variable
+                    document.getElementById("regfullname").innerHTML = regError; //set inner html to displayn the register error
+                }
+            }
+            if (params.has("RegPasswordError")) { //if has RegPasswordError from query 
+
+                regError2 = params.get("RegPasswordError"); //get the errors from the query and store into variable
+                passNoMatch = '<font color="red">Password DOES NOT Match</font>'; //assigns same error into a variable
+                passLength = '<font color="red">Password must be more than 6 characters long</font>'; //assigns same error into a variable
+
+                if (regError2 == passLength) { //if the error received is the same as the error stored in the variable
+                    document.getElementById("regpassword").innerHTML = regError2; //set inner html to displayn the register error
+                }
+                if (regError2 == passNoMatch) { //if the error received is the same as the error stored in the variable
+                    document.getElementById("regrepeatpassword").innerHTML = regError2; //set inner html to displayn the register error
+                }
+
+
+            }
+
+            if (params.has("RegUsernameError")) { //if has RegUsernameError from query 
+
+
+                regError3 = params.get("RegUsernameError"); //get the errors from the query and store into variable
+
+                useNumLet = '<font color="red">Username must be characters and numbers only</font>'; //assigns same error into a variable
+                useLong = '<font color="red">Username must be 10 characters or less</font>'; //assigns same error into a variable
+                useShort = '<font color="red">Username must be at least 4 characters long</font>'; //assigns same error into a variable
+                useTaken = '<font color="red">User already registered</font>'; //assigns same error into a variable
+
+                if (regError3 == useNumLet) { //if the error received is the same as the error stored in the variable
+                    document.getElementById("regusername").innerHTML = regError3; //set inner html to displayn the register error
+                }
+                if (regError3 == useLong) { //if the error received is the same as the error stored in the variable
+                    document.getElementById("regusername").innerHTML = regError3; //set inner html to displayn the register error
+                }
+                if (regError3 == useShort) { //if the error received is the same as the error stored in the variable
+                    document.getElementById("regusername").innerHTML = regError3; //set inner html to displayn the register error
+                }
+                if (regError3 == useTaken) {
+                    document.getElementById("regusername").innerHTML = regError3; //set inner html to displayn the register error
+                }
+
+            }
+
+            if (params.has("RegEmailError")) { //if has RegEmailError from query
+                regError4 = params.get("RegEmailError"); //get the errors from the query and store into variable
+                emailInvalid = '<font color="red">Email is invalid</font>'; //assigns same error into a variable
+
+                if (regError4 == emailInvalid) { //if the error received is the same as the error stored in the variable
+                    document.getElementById("regemail").innerHTML = regError4; //set inner html to displayn the register error
+                }
+
+            }
+
+            if (params.has("stickRegFullname")) { //if has stickRegFullname
+                showRegFullname = params.get("stickRegFullname"); //get the info from the query and store into variable
+                document.getElementById("regfullnamebox").value = showRegFullname; //sets the value to the inoput of the useer
+            }
+            if (params.has("stickUsername")) { //if has stickRegFullname
+                showUsername = params.get("stickUsername"); //get the info from the query and store into variable
+                document.getElementById("regusernamebox").value = showUsername; //sets the value to the input of the user
+
+            }
+            if (params.has("stickEmail")) { //if has stickEmail
+                showEmail = params.get("stickEmail"); //get the info from the query and store into variable
+                document.getElementById("regemailbox").value = showEmail; //set the value to the input of the user
+            }
+        }
+
+
+
+    </script>
+
+</head>
+
+<body>
+    <!--setup register form-->
+    <form method="POST" id="register_form" name="registration_form" class="box">
+        <h1> R E G I S T E R </h1>
+        <input type="text" id="regfullnamebox" name="fullname" size="40" placeholder="enter full name"
+            style="font-size: 15px;" value="">
+        <label id="regfullname" class="" style="color: black;">fullname</label><br />
+        <input type="text" id="regusernamebox" name="username" size="40" placeholder="enter username"
+            style="font-size: 15px;" value="">
+        <label id="regusername" class="" style="color: black;">username</label><br />
+        <input type="password" id="reguserbox" name="password" size="40" placeholder="enter password"
+            style="font-size: 15px;" value="">
+        <label id="regpassword" class="" style="color: black;">password</label><br />
+        <input type="password" id="reguserbox" name="repeat_password" size="40" placeholder="enter password again"
+            style="font-size: 15px;" value="">
+        <label id="regrepeatpassword" class="" style="color: black;">repeat password</label><br />
+        <input type="email" id="regemailbox" name="email" size="40" placeholder="enter email" style="font-size: 15px;"
+            value="">
+        <label id="regemail" class="" style="color: black;">email</label><br />
+        <input type="submit" value="register" id="submit">
+    </form>
+</body>
+<script>
+    //Sets link with quantity data to pass to next page
+    register_form.action = "/register" + document.location.search;
+</script>
+
+</html>
